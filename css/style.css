@@ -15,7 +15,7 @@
 }
 
 .wrong-answer {
-	background: #FF8362;	
+	background: #FF8362;
 }
 
 .correct-answer {
@@ -43,7 +43,7 @@
 
 /*multimedia styling*/
 
-img, .youtube {
+.youtube {
 	margin-bottom: 1em;
 	min-height: 200px;
 	max-height: 200px;

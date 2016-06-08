@@ -30,7 +30,7 @@
             not_finished_html : undefined,
             cheating : false,
             possible_display_elements  : [
-                { 
+                {
                     name : 'backgroundimage',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -43,9 +43,9 @@
                             slide[this.name] +
                             '\'); height: 100%; width: 100%;position:absolute;z-index: -1"></div>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'topimage',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -54,11 +54,11 @@
                         if (!slide[this.name]) {return '';}
                         return $(
                                 '<img src="' + slide[this.name]  +
-                                '" class="img-responsive' + this.name + '"></img>' 
+                                '" class="img-responsive' + this.name + '"></img>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'topvideoembed',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -72,21 +72,21 @@
                             slide.topvideoembedaspectratio + '%">' +
                             slide[this.name] + '</div>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'title',
                     finder: function(container) {
                         return container.find('.' + this.name);
                     },
                     create_element : function(slide) {
                         if (!slide[this.name]) {return '';}
-                        return $('<h3 class="' + this.name + '">' +
-                            slide[this.name] + '</h3>' 
+                        return $('<h4 class="' + this.name + '">' +
+                            slide[this.name] + '</h4>' 
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'middleimage',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -95,11 +95,11 @@
                         if (!slide[this.name]) {return '';}
                         return $(
                                 '<img src="' + slide[this.name] +
-                                '" class="img-responsive ' + this.name + '"></img>' 
+                                '" class="img-responsive ' + this.name + '"></img>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'middlevideoembed',
                     needs_aspect_ratio : true,
                     finder: function(container) {
@@ -113,9 +113,9 @@
                             slide.middlevideoembedaspectratio + '%">' +
                             slide[this.name] + '</div>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'subhed',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -128,9 +128,9 @@
                             slide[this.name] +
                             '</h2>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'text',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -143,9 +143,9 @@
                             slide[this.name] +
                             '</p>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'bottomimage',
                     finder: function(container) {
                         return container.find('.' + this.name);
@@ -153,11 +153,11 @@
                     create_element : function(slide) {
                         if (!slide[this.name]) {return '';}
                         return $('<img src="' + slide[this.name] +
-                            '" class="img-responsive ' + this.name + '"></img>' 
+                            '" class="img-responsive ' + this.name + '"></img>'
                         );
-                    } 
+                    }
                 },
-                { 
+                {
                     name : 'bottomvideoembed',
                     needs_aspect_ratio : true,
                     finder: function(container) {
@@ -171,7 +171,7 @@
                             slide.bottomvideoembedaspectratio + '%">' +
                             slide[this.name] + '</div>'
                         );
-                    } 
+                    }
                 }
             ],
 
@@ -218,7 +218,7 @@
             },
 
             load_from_google_spreadsheet: function(spreadsheet_id) {
-                Tabletop.init({ 
+                Tabletop.init({
                     proxy: this.proxy ? this.proxy : undefined,
                     key: spreadsheet_id,
                     prettyColumnNames: false,
@@ -257,24 +257,24 @@
                     return '';
                 }
                 height = parseInt(height[0].replace(/height="/, '').replace(/"/, ''), 10);
-                                
+
                 var width = videoembed.match(/width="\d+"/);
                 if (!width || !width[0]) {
                     console.log('Your video embed code needs a width.');
                     return '';
                 }
                 width = parseInt(width[0].replace(/width="/, '').replace(/"/, ''), 10);
-            
+
                 return (height / width)*100;
             },
             pull_answer_value_from_spreadsheet : function(row, value, wrong_number, correct) {
                 correct = correct ? 'right' : 'wrong';
                 if (row[correct + wrong_number + value] && row[correct + wrong_number + value] !== self.defaulting_flag) {
-                    return (row[correct + wrong_number + value]);                    
+                    return (row[correct + wrong_number + value]);
                 }
-                
+
                 if ((self.defaulting_behavior_on && row[correct + wrong_number + value] !== self.defaulting_flag) ||
-                    (!self.defaulting_behavior_on && row[correct + wrong_number + value] === self.defaulting_flag) 
+                    (!self.defaulting_behavior_on && row[correct + wrong_number + value] === self.defaulting_flag)
                 ) {
                     return (row[correct + value] && row[correct + value] !== self.defaulting_flag ?
                                    row[correct + value] :
@@ -421,7 +421,7 @@
                         $(this).removeClass('possible_answer');
                         answers_container
                             .find('.answer_' + answer_index)
-                            .addClass( 
+                            .addClass(
                                 was_correct ? 'correct-answer' : 'wrong-answer'
                             );
 
@@ -438,7 +438,7 @@
 
                         //show new slide
                         self.display_answer(self.quiz_data[question_index], question_index, self.quiz_data[question_index].possible_answers[answer_index]);
-                        
+
                         // track that this was selected last
                         self.quiz_data[question_index].previously_selected = self.quiz_data[question_index].possible_answers[answer_index];
                     });
@@ -464,7 +464,7 @@
                         return;
                     }
                 }
-                container.prepend( 
+                container.prepend(
                     self.possible_display_elements[place_in_display_elements].create_element(slide)
                 );
             },

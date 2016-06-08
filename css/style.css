@@ -13,6 +13,12 @@
     font-weight: bold;
 }
 
+.question .text {
+  border: 1px solid #404040;
+  padding: 1em;
+  border-radius: 15px;
+}
+
 .correct-answer, .wrong-answer {
 	opacity: .75;
 	cursor: pointer;

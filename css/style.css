@@ -1,4 +1,8 @@
 
+.list-unstyled li {
+  list-style-type: none;
+}
+
 .possible_answer  {
     padding: .75em;
 }
